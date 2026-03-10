@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import ethiopiaMap from "@/assets/ethiopia-map.png";
 
 const regions = [
   {
@@ -72,28 +73,13 @@ const OriginMap = () => {
             viewport={{ once: true }}
             className="relative aspect-square bg-card rounded-sm overflow-hidden"
           >
-            {/* Simplified Ethiopia shape */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <svg viewBox="0 0 800 700" className="w-4/5 h-4/5">
-                {/* Realistic Ethiopia outline */}
-                <path
-                  d="M290,50 L310,48 L340,52 L370,45 L400,40 L430,38 L460,42 L490,50 L520,55 L550,52 L580,60 L610,70 L640,85 L660,100 L680,120 L700,145 L715,170 L720,195 L718,220 L710,245 L700,265 L685,285 L670,300 L655,320 L640,340 L620,355 L600,370 L580,385 L560,400 L540,415 L520,425 L500,435 L480,445 L460,458 L440,470 L420,480 L400,490 L380,498 L360,505 L340,510 L320,515 L300,518 L280,520 L260,518 L240,512 L220,505 L200,495 L185,480 L170,462 L158,440 L148,418 L140,395 L135,370 L130,345 L128,320 L130,295 L135,270 L142,248 L150,228 L160,210 L172,192 L185,175 L198,160 L212,145 L228,130 L245,115 L260,100 L272,85 L280,70 L285,58 Z"
-                  fill="hsl(var(--primary))"
-                  fillOpacity="0.12"
-                  stroke="hsl(var(--primary))"
-                  strokeWidth="1.5"
-                  strokeOpacity="0.35"
-                />
-                {/* Inner detail lines for topographic feel */}
-                <path
-                  d="M300,120 Q400,110 500,140 Q580,170 620,240 Q650,300 600,380 Q550,430 460,460 Q370,490 300,480 Q220,460 180,390 Q160,320 180,250 Q210,180 300,120 Z"
-                  fill="none"
-                  stroke="hsl(var(--primary))"
-                  strokeWidth="0.5"
-                  strokeOpacity="0.15"
-                  strokeDasharray="4 4"
-                />
-              </svg>
+            {/* Ethiopia map image */}
+            <div className="absolute inset-0 flex items-center justify-center p-8">
+              <img
+                src={ethiopiaMap}
+                alt="Map of Ethiopia coffee regions"
+                className="w-full h-full object-contain opacity-70"
+              />
             </div>
 
             {/* Region dots */}
