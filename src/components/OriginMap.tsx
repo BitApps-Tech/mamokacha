@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import ethiopiaMap from "@/assets/ethiopia-map.png";
 
 const regions = [
   {
