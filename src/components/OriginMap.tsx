@@ -74,13 +74,10 @@ const OriginMap = () => {
             className="relative aspect-square bg-card rounded-sm overflow-hidden"
           >
             {/* Ethiopia map image */}
-            <div className="absolute inset-0 flex items-center justify-center p-8">
-              <img
-                src={ethiopiaMap}
-                alt="Map of Ethiopia coffee regions"
-                className="w-full h-full object-contain opacity-70"
-              />
-            </div>
+            <div
+              className="absolute inset-0 flex items-center justify-center p-8 [&_svg]:w-full [&_svg]:h-full [&_svg]:object-contain [&_svg]:opacity-70"
+              dangerouslySetInnerHTML={{ __html: ethiopiaMapSvg }}
+            />
 
             {/* Region dots */}
             {regions.map((region, i) => (
