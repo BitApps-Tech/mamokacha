@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import ethiopiaMap from "@/assets/ethiopia-map.png";
+import ethiopiaMapSvg from "@/assets/ethiopia-map.svg?raw";
 
 const regions = [
   {
@@ -9,7 +9,7 @@ const regions = [
     altitude: "1,700 - 2,200m",
     processing: "Washed & Natural",
     description: "One of the most celebrated Ethiopian coffees in the world.",
-    x: "52%", y: "68%",
+    x: "46%", y: "72%",
   },
   {
     name: "Sidamo",
@@ -17,7 +17,7 @@ const regions = [
     altitude: "1,500 - 2,200m",
     processing: "Washed",
     description: "Rich and complex flavors from southern Ethiopia.",
-    x: "48%", y: "72%",
+    x: "42%", y: "68%",
   },
   {
     name: "Guji",
@@ -25,7 +25,7 @@ const regions = [
     altitude: "1,800 - 2,300m",
     processing: "Natural & Honey",
     description: "Emerging origin with exceptional cup quality.",
-    x: "56%", y: "74%",
+    x: "50%", y: "70%",
   },
   {
     name: "Harrar",
@@ -33,7 +33,7 @@ const regions = [
     altitude: "1,500 - 2,100m",
     processing: "Natural / Dry",
     description: "Ancient coffee region with bold, fruity profiles.",
-    x: "68%", y: "42%",
+    x: "62%", y: "48%",
   },
   {
     name: "Limu",
@@ -41,7 +41,7 @@ const regions = [
     altitude: "1,400 - 2,000m",
     processing: "Washed",
     description: "Smooth and well-balanced western Ethiopian coffee.",
-    x: "38%", y: "52%",
+    x: "35%", y: "55%",
   },
 ];
 
@@ -74,13 +74,10 @@ const OriginMap = () => {
             className="relative aspect-square bg-card rounded-sm overflow-hidden"
           >
             {/* Ethiopia map image */}
-            <div className="absolute inset-0 flex items-center justify-center p-8">
-              <img
-                src={ethiopiaMap}
-                alt="Map of Ethiopia coffee regions"
-                className="w-full h-full object-contain opacity-70"
-              />
-            </div>
+            <div
+              className="absolute inset-0 flex items-center justify-center p-8 [&_svg]:w-full [&_svg]:h-full [&_svg]:object-contain [&_svg]:opacity-70"
+              dangerouslySetInnerHTML={{ __html: ethiopiaMapSvg }}
+            />
 
             {/* Region dots */}
             {regions.map((region, i) => (
