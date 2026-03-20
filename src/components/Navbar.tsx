@@ -62,15 +62,30 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Mobile toggle */}
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className={`lg:hidden transition-colors ${
-              scrolled ? "text-foreground" : "text-background"
-            }`}
-          >
-            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          {/* Cart + Mobile toggle */}
+          <div className="flex items-center gap-4">
+            <button
+              onClick={() => setIsOpen(true)}
+              className={`relative transition-colors duration-300 hover:text-accent ${
+                scrolled ? "text-foreground" : "text-background"
+              }`}
+            >
+              <ShoppingBag size={20} />
+              {totalItems > 0 && (
+                <span className="absolute -top-2 -right-2 w-5 h-5 flex items-center justify-center bg-accent text-espresso text-[10px] font-sans font-bold rounded-full">
+                  {totalItems}
+                </span>
+              )}
+            </button>
+            <button
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className={`lg:hidden transition-colors ${
+                scrolled ? "text-foreground" : "text-background"
+              }`}
+            >
+              {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
       </nav>
 

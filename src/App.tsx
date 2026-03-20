@@ -36,19 +36,22 @@ const App = () => {
           {loading && <LoadingScreen />}
         </AnimatePresence>
         {!loading && (
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/our-story" element={<About />} />
-              <Route path="/cafes" element={<Cafes />} />
-              <Route path="/menu" element={<Menu />} />
-              <Route path="/shop" element={<Shop />} />
-              <Route path="/events" element={<Events />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </BrowserRouter>
+          <CartProvider>
+            <CartDrawer />
+            <BrowserRouter>
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/our-story" element={<About />} />
+                <Route path="/cafes" element={<Cafes />} />
+                <Route path="/menu" element={<Menu />} />
+                <Route path="/shop" element={<Shop />} />
+                <Route path="/events" element={<Events />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </BrowserRouter>
+          </CartProvider>
         )}
       </TooltipProvider>
     </QueryClientProvider>

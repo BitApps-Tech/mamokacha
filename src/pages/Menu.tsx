@@ -113,6 +113,22 @@ const Menu = () => {
                     <span className="font-sans text-sm text-accent font-medium">{item.price}</span>
                   </div>
                   <p className="font-sans text-xs text-muted-foreground leading-relaxed">{item.description}</p>
+                  <button
+                    onClick={() => {
+                      const priceNum = parseInt(item.price.replace(/[^\d]/g, ""));
+                      addItem({
+                        id: `menu-${item.name}`,
+                        name: item.name,
+                        price: priceNum,
+                        image: item.image,
+                        category: active,
+                      });
+                      toast.success(`${item.name} added to cart`);
+                    }}
+                    className="mt-3 flex items-center gap-2 text-[10px] tracking-widest uppercase font-sans font-medium text-primary hover:text-accent transition-colors active:scale-95"
+                  >
+                    <ShoppingBag size={14} /> Add to Cart
+                  </button>
                 </div>
               ))}
             </motion.div>

@@ -97,7 +97,21 @@ const Shop = () => {
                   <p className="font-sans text-xs text-muted-foreground">{product.notes}</p>
                   <div className="flex items-center justify-between pt-2">
                     <span className="font-sans text-base font-medium text-foreground">{product.price.toLocaleString()} ETB</span>
-                    <Button variant="gold" size="sm" className="h-9 px-4 py-0 text-[10px]">
+                    <Button
+                      variant="gold"
+                      size="sm"
+                      className="h-9 px-4 py-0 text-[10px]"
+                      onClick={() => {
+                        addItem({
+                          id: `shop-${product.name}`,
+                          name: product.name,
+                          price: product.price,
+                          image: product.image,
+                          category: product.category,
+                        });
+                        toast.success(`${product.name} added to cart`);
+                      }}
+                    >
                       <ShoppingBag size={14} className="mr-1" /> Add to Cart
                     </Button>
                   </div>
