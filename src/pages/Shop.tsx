@@ -26,6 +26,7 @@ const products = [
 
 const Shop = () => {
   const [activeFilter, setActiveFilter] = useState("All");
+  const { addItem } = useCart();
   const filtered = activeFilter === "All" ? products : products.filter((p) => p.category === activeFilter);
 
   return (
