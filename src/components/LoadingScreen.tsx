@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import logo from "@/assets/logo.png";
+import logoWhite from "@/assets/logo-white.png";
 
 const LoadingScreen = () => {
   return (
@@ -12,15 +12,12 @@ const LoadingScreen = () => {
         transition={{ duration: 0.4 }}
       >
         <motion.img
-          src={logo}
+          src={logoWhite}
           alt="Mamokacha"
-          className="w-24 h-24 md:w-32 md:h-32"
-          animate={{ rotate: 360 }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: "linear",
-          }}
+          className="w-48 md:w-64"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         />
         <motion.div
           className="w-12 h-0.5 bg-accent"
