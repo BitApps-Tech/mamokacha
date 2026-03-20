@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ShoppingBag } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { useCart } from "@/contexts/CartContext";
+import { toast } from "sonner";
 import espressoImg from "@/assets/menu-espresso.jpg";
 import macchiatoImg from "@/assets/menu-macchiato.jpg";
 import cappuccinoImg from "@/assets/menu-cappuccino.jpg";
