@@ -47,6 +47,7 @@ const menuData: Record<string, Array<{ name: string; description: string; price:
 
 const Menu = () => {
   const [active, setActive] = useState("Hot Coffee");
+  const { addItem } = useCart();
 
   return (
     <div className="min-h-screen bg-background">
