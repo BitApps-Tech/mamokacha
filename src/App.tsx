@@ -12,10 +12,13 @@ import Menu from "./pages/Menu";
 import Shop from "./pages/Shop";
 import Events from "./pages/Events";
 import Contact from "./pages/Contact";
+import AgroProcessing from "./pages/AgroProcessing";
+import DairyProducts from "./pages/DairyProducts";
 import NotFound from "./pages/NotFound";
 import LoadingScreen from "./components/LoadingScreen";
 import { CartProvider } from "./contexts/CartContext";
 import CartDrawer from "./components/CartDrawer";
+import PhoneSubscribePopup from "./components/PhoneSubscribePopup";
 
 const queryClient = new QueryClient();
 
@@ -38,6 +41,7 @@ const App = () => {
         {!loading && (
           <CartProvider>
             <CartDrawer />
+            <PhoneSubscribePopup />
             <BrowserRouter>
               <Routes>
                 <Route path="/" element={<Index />} />
@@ -47,6 +51,8 @@ const App = () => {
                 <Route path="/menu" element={<Menu />} />
                 <Route path="/shop" element={<Shop />} />
                 <Route path="/events" element={<Events />} />
+                <Route path="/agro-processing" element={<AgroProcessing />} />
+                <Route path="/dairy-products" element={<DairyProducts />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>

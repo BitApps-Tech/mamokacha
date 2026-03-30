@@ -1,9 +1,11 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import cafeImg from "@/assets/cafe-interior.jpg";
+import cafeImg from "@/assets/cafe.jpg";
 import agroImg from "@/assets/agro-processing.jpg";
 import dairyImg from "@/assets/dairy.jpg";
-import eventsImg from "@/assets/events-venue.jpg";
+import eventsImg from "@/assets/hotel-2.jpg";
+
+const MotionLink = motion(Link);
 
 const ecosystemItems = [
   {
@@ -16,13 +18,13 @@ const ecosystemItems = [
     title: "Agro Processing",
     description: "Quality production rooted in Ethiopian agriculture.",
     image: agroImg,
-    to: "/about",
+    to: "/agro-processing",
   },
   {
     title: "Dairy Products",
     description: "Fresh and carefully processed dairy.",
     image: dairyImg,
-    to: "/about",
+    to: "/dairy-products",
   },
   {
     title: "Mamokacha Gara",
@@ -30,7 +32,7 @@ const ecosystemItems = [
     image: eventsImg,
     to: "/events",
   },
-];
+] as const;
 
 const BrandEcosystem = () => {
   return (
@@ -48,29 +50,30 @@ const BrandEcosystem = () => {
           <div className="gold-divider mt-6" />
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {ecosystemItems.map((item, i) => (
-            <motion.div
+            <MotionLink
               key={item.title}
+              to={item.to}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
+              aria-label={`${item.title}: ${item.description}`}
+              className="group relative block aspect-[16/10] overflow-hidden rounded-sm outline-none ring-offset-background focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
             >
-              <Link to={item.to} className="group block relative aspect-[16/10] overflow-hidden">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-espresso/40 group-hover:bg-espresso/60 transition-colors duration-500" />
-                <div className="absolute inset-0 flex flex-col justify-end p-8">
-                  <h3 className="font-serif text-2xl text-background mb-2">{item.title}</h3>
-                  <p className="text-sm font-sans text-background/80">{item.description}</p>
-                </div>
-              </Link>
-            </motion.div>
+              <img
+                src={item.image}
+                alt=""
+                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-espresso/40 transition-colors duration-500 group-hover:bg-espresso/60" />
+              <div className="absolute inset-0 flex flex-col justify-end p-8">
+                <h3 className="mb-2 font-serif text-2xl text-background">{item.title}</h3>
+                <p className="font-sans text-sm text-background/80">{item.description}</p>
+              </div>
+            </MotionLink>
           ))}
         </div>
       </div>

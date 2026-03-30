@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import farmImg from "@/assets/coffee-farm.jpg";
+import storyImg from "@/assets/Mamo_Kacha-05332-scaled.jpg";
 
 const StorySection = () => {
   return (
@@ -16,8 +16,8 @@ const StorySection = () => {
             className="aspect-[4/5] overflow-hidden"
           >
             <img
-              src={farmImg}
-              alt="Ethiopian coffee farm"
+              src={storyImg}
+              alt="Mamokacha coffee heritage"
               className="w-full h-full object-cover"
               loading="lazy"
             />

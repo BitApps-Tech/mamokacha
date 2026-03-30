@@ -22,7 +22,7 @@ const Footer = () => {
           <div>
             <h4 className="text-xs tracking-widest uppercase font-sans mb-6 text-accent">Explore</h4>
             <div className="flex flex-col gap-3">
-              {["Our Story", "Cafés", "Menu", "Events"].map((item) => (
+              {["Our Story", "Cafes", "Menu", "Events"].map((item) => (
                 <Link
                   key={item}
                   to={`/${item.toLowerCase().replace(/\s/g, "-")}`}
@@ -76,9 +76,22 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-cream/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-xs font-sans text-cream/40">
-            © 2026 Mamokacha Coffee. All rights reserved.
-          </p>
+          <div className="text-center md:text-left">
+            <p className="text-xs font-sans text-cream/40">
+              © 2026 Mamo Kacha. All rights reserved.
+            </p>
+            <p className="mt-2 text-xs font-sans text-cream/40">
+              Designed &amp; Developed by{" "}
+              <a
+                href="https://bitappstech.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-accent/90 hover:text-accent underline-offset-2 transition-colors hover:underline"
+              >
+                BitApps Tech
+              </a>
+            </p>
+          </div>
           <div className="flex gap-6">
             {["Privacy Policy", "Terms of Service"].map((item) => (
               <a key={item} href="#" className="text-xs font-sans text-cream/40 hover:text-cream/70 transition-colors">

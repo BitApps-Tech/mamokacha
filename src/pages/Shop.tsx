@@ -22,11 +22,15 @@ const products = [
   { name: "Monthly Subscription", category: "Subscriptions", price: 2400, roast: "Rotating", notes: "Curated selection delivered fresh monthly", weight: "2 × 250g", image: subscriptionImg },
   { name: "Harrar Bold", category: "Single Origin", price: 880, roast: "Medium-Dark", notes: "Dried fruit, spice, mocha", weight: "250g", image: espressoImg },
   { name: "Gift Subscription – 3 Months", category: "Subscriptions", price: 6900, roast: "Curated", notes: "3 months of premium Ethiopian coffee", weight: "2 × 250g/mo", image: subscriptionImg },
+  { name: "Limu Gera", category: "Single Origin", price: 910, roast: "Medium-Light", notes: "Citrus, honey, floral aromatics", weight: "250g", image: singleOriginImg },
+  { name: "Jimma Organic", category: "Single Origin", price: 895, roast: "Medium", notes: "Cocoa, dried cherry, full body", weight: "250g", image: singleOriginImg },
+  { name: "Heritage House Blend", category: "Blends", price: 840, roast: "Medium", notes: "Balanced cup, chocolate and stone fruit", weight: "250g", image: signatureImg },
+  { name: "Discovery Trio Pack", category: "Blends", price: 520, roast: "Mixed", notes: "Three 100g bags—rotate your morning ritual", weight: "3 × 100g", image: signatureImg },
 ];
 
 const Shop = () => {
   const [activeFilter, setActiveFilter] = useState("All");
-  const { addItem } = useCart();
+  const { addShopItem } = useCart();
   const filtered = activeFilter === "All" ? products : products.filter((p) => p.category === activeFilter);
 
   return (
@@ -102,7 +106,7 @@ const Shop = () => {
                       size="sm"
                       className="h-9 px-4 py-0 text-[10px]"
                       onClick={() => {
-                        addItem({
+                        addShopItem({
                           id: `shop-${product.name}`,
                           name: product.name,
                           price: product.price,

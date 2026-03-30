@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { MapPin, Clock, Phone } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -32,6 +33,20 @@ const locations = [
     features: ["Brunch Menu", "Meeting Room", "WiFi", "Drive-through"],
   },
 ];
+
+/** Where each amenity label navigates (menu, events, or contact with context). */
+const featureHref: Record<string, string> = {
+  "Full Menu": "/menu",
+  "Outdoor Seating": "/contact?inquiry=outdoor-seating",
+  WiFi: "/contact?inquiry=wifi",
+  "Private Events": "/events",
+  "Specialty Coffee Bar": "/menu",
+  "Pastry Counter": "/menu",
+  Parking: "/contact?inquiry=parking",
+  "Brunch Menu": "/menu",
+  "Meeting Room": "/contact?inquiry=meeting-room",
+  "Drive-through": "/contact?inquiry=drive-through",
+};
 
 const Cafes = () => {
   return (
@@ -90,9 +105,13 @@ const Cafes = () => {
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {loc.features.map((f) => (
-                    <span key={f} className="text-xs font-sans tracking-wider uppercase px-4 py-2 border border-border text-muted-foreground">
+                    <Link
+                      key={f}
+                      to={featureHref[f] ?? "/contact"}
+                      className="inline-block rounded-sm border border-border px-4 py-2 font-sans text-xs uppercase tracking-wider text-muted-foreground transition-colors hover:border-accent hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+                    >
                       {f}
-                    </span>
+                    </Link>
                   ))}
                 </div>
               </div>

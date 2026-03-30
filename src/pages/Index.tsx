@@ -12,18 +12,21 @@ import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen">
       <Navbar />
       <HeroSection />
-      <FeaturedProducts />
-      <BrandEcosystem />
-      <StorySection />
-      <MenuPreview />
-      <EventsSection />
-      <OriginMap />
-      <RoastingSection />
-      <SubscriptionSection />
-      <Footer />
+      {/* Stacks above fixed hero video so white sections scroll up and mask the video from the bottom */}
+      <div className="relative z-10">
+        <FeaturedProducts />
+        <BrandEcosystem />
+        <StorySection />
+        <MenuPreview />
+        <EventsSection />
+        <OriginMap />
+        <RoastingSection />
+        <SubscriptionSection />
+        <Footer />
+      </div>
     </div>
   );
 };

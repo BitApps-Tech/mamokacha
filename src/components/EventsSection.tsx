@@ -1,16 +1,19 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
-import venueImg from "@/assets/events-venue.jpg";
+import EventBookingModal from "@/components/EventBookingModal";
+import hotelBg from "@/assets/hotel-2.jpg";
 
 const EventsSection = () => {
+  const [bookingOpen, setBookingOpen] = useState(false);
+
   return (
-    <section className="relative min-h-[70vh] flex items-center overflow-hidden">
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${venueImg})` }}
-      />
-      <div className="absolute inset-0 bg-espresso/70" />
+    <section
+      className="relative flex min-h-[70vh] items-center overflow-hidden bg-cover bg-center bg-no-repeat bg-fixed"
+      style={{ backgroundImage: `url(${hotelBg})` }}
+    >
+      <EventBookingModal open={bookingOpen} onOpenChange={setBookingOpen} />
+      <div className="absolute inset-0 bg-espresso/70" aria-hidden />
 
       <div className="relative z-10 max-w-3xl mx-auto text-center px-6 py-20">
         <motion.div
@@ -34,8 +37,8 @@ const EventsSection = () => {
             <span className="text-accent">•</span>
             <span>Corporate Meetings</span>
           </div>
-          <Button variant="gold" size="lg" asChild>
-            <Link to="/events">Book an Event</Link>
+          <Button variant="gold" size="lg" type="button" onClick={() => setBookingOpen(true)}>
+            Book an Event
           </Button>
         </motion.div>
       </div>

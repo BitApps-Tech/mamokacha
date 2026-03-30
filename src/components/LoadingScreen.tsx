@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import logoWhite from "@/assets/logo-white.png";
+import logo from "@/assets/logo.png";
 
 const LoadingScreen = () => {
   return (
@@ -11,20 +11,21 @@ const LoadingScreen = () => {
         exit={{ opacity: 0 }}
         transition={{ duration: 0.4 }}
       >
-        <motion.img
-          src={logoWhite}
-          alt="Mamokacha"
-          className="w-48 md:w-64"
+        <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-        />
-        <motion.div
-          className="w-12 h-0.5 bg-accent"
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ duration: 1, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
-        />
+        >
+          <div
+            className="h-40 w-40 md:h-52 md:w-52 animate-spin motion-reduce:animate-none [animation-duration:2.5s]"
+          >
+            <img
+              src={logo}
+              alt="Mamokacha"
+              className="h-full w-full rounded-full object-cover"
+            />
+          </div>
+        </motion.div>
       </motion.div>
     </div>
   );

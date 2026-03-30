@@ -1,10 +1,11 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Calendar, Users, MapPin, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import eventsGaraImg from "@/assets/events-gara.jpg";
-import eventsVenueImg from "@/assets/events-venue.jpg";
+import EventBookingModal from "@/components/EventBookingModal";
+import hotelGaraImg from "@/assets/hotel-2.jpg";
 
 const eventTypes = [
   { icon: Users, title: "Private Events", description: "Intimate gatherings with bespoke coffee experiences and catering." },
@@ -14,13 +15,16 @@ const eventTypes = [
 ];
 
 const Events = () => {
+  const [bookingOpen, setBookingOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
+      <EventBookingModal open={bookingOpen} onOpenChange={setBookingOpen} />
 
       {/* Hero */}
       <section className="relative h-[70vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${eventsGaraImg})` }} />
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${hotelGaraImg})` }} />
         <div className="absolute inset-0 bg-espresso/50" />
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -35,7 +39,9 @@ const Events = () => {
           <p className="text-background/80 font-sans text-base md:text-lg max-w-xl mx-auto mb-8">
             An exclusive event venue where Ethiopian hospitality meets modern elegance.
           </p>
-          <Button variant="gold" size="lg">Book an Event</Button>
+          <Button variant="gold" size="lg" type="button" onClick={() => setBookingOpen(true)}>
+            Book an Event
+          </Button>
         </motion.div>
       </section>
 
@@ -79,7 +85,7 @@ const Events = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <img src={eventsVenueImg} alt="Mamokacha Gara venue" className="w-full aspect-[4/3] object-cover" loading="lazy" />
+            <img src={hotelGaraImg} alt="Mamokacha Gara venue" className="w-full aspect-[4/3] object-cover" loading="lazy" />
           </motion.div>
           <motion.div
             initial={{ opacity: 0, x: 30 }}
@@ -100,7 +106,9 @@ const Events = () => {
                 </li>
               ))}
             </ul>
-            <Button variant="hero" size="lg">Inquire Now</Button>
+            <Button variant="hero" size="lg" type="button" onClick={() => setBookingOpen(true)}>
+              Inquire Now
+            </Button>
           </motion.div>
         </div>
       </section>
